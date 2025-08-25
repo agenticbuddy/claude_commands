@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Aira Framework Uninstall Script
+# Strategy:CC Framework Uninstall Script
 # Removes agents and commands from ~/.claude directory
 
 set -e
@@ -28,14 +28,14 @@ print_message() {
 print_header() {
     echo ""
     print_message "$RED" "========================================="
-    print_message "$RED" "   Aira Framework Uninstall"
+    print_message "$RED" "   Strategy:CC Framework Uninstall"
     print_message "$RED" "========================================="
     echo ""
 }
 
 # Confirm uninstall
 confirm_uninstall() {
-    print_message "$YELLOW" "This will remove all Aira agents and commands from:"
+    print_message "$YELLOW" "This will remove all Strategy:CC agents and commands from:"
     echo "  - $AGENTS_DIR"
     echo "  - $COMMANDS_DIR"
     echo ""

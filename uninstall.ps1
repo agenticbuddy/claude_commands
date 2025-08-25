@@ -1,4 +1,4 @@
-# Aira Framework Uninstall Script for Windows
+# Strategy:CC Framework Uninstall Script for Windows
 # Removes agents and commands from ~/.claude directory
 
 param(
@@ -23,7 +23,7 @@ function Write-ColorOutput {
 function Show-Header {
     Write-Host ""
     Write-ColorOutput "=========================================" -ForegroundColor Red
-    Write-ColorOutput "   Aira Framework Uninstall" -ForegroundColor Red
+    Write-ColorOutput "   Strategy:CC Framework Uninstall" -ForegroundColor Red
     Write-ColorOutput "=========================================" -ForegroundColor Red
     Write-Host ""
 }
@@ -31,7 +31,7 @@ function Show-Header {
 # Confirm uninstall
 function Confirm-Uninstall {
     if (-not $Force) {
-        Write-ColorOutput "This will remove all Aira agents and commands from:" -ForegroundColor Yellow
+        Write-ColorOutput "This will remove all Strategy:CC agents and commands from:" -ForegroundColor Yellow
         Write-Host "  - $AgentsDir"
         Write-Host "  - $CommandsDir"
         Write-Host ""

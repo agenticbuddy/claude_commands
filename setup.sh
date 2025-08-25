@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Aira Framework Setup Script
+# Strategy:CC Framework Setup Script
 # Installs agents and commands to ~/.claude directory
 
 set -e
@@ -29,7 +29,7 @@ print_message() {
 print_header() {
     echo ""
     print_message "$BLUE" "========================================="
-    print_message "$BLUE" "   Aira Framework Setup"
+    print_message "$BLUE" "   Strategy:CC Framework Setup"
     print_message "$BLUE" "========================================="
     echo ""
 }

@@ -69,7 +69,7 @@ Process-specific enforcement examples:
 | Operations | Change approval, rollback plan, monitoring confirmation |
 
 ### Progress Tracking
-Maintain work items in `.caira/logs/<Local Date and time>_execution.log`: One line per record
+Maintain work items in `.strategy/logs/<Local Date and time>_execution.log`: One line per record
 <ISO_8601> <TaskID> <active agent> <action: [Execution|Testing|Review|Documenting|Running|Building|Setting up|Removing|Delegating|...]> <Short Description, like: "Started system-architect to review EPIC-17", or "Received a review feedback for EPIC-17 from product-strategist: Failed, 17 action items", or "Checked and confirmed: task T-234 is completed according to the process">
 
 ## Communication Protocol

@@ -1,4 +1,4 @@
-# Aira Framework Setup Script for Windows
+# Strategy:CC Framework Setup Script for Windows
 # Installs agents and commands to ~/.claude directory
 
 param(
@@ -24,7 +24,7 @@ function Write-ColorOutput {
 function Show-Header {
     Write-Host ""
     Write-ColorOutput "=========================================" -ForegroundColor Blue
-    Write-ColorOutput "   Aira Framework Setup" -ForegroundColor Blue
+    Write-ColorOutput "   Strategy:CC Framework Setup" -ForegroundColor Blue
     Write-ColorOutput "=========================================" -ForegroundColor Blue
     Write-Host ""
 }

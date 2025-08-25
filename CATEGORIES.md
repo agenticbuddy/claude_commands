@@ -1,6 +1,6 @@
 # Agent Categories
 
-This document provides a categorized overview of all available agents in the claude_commands framework, organized into 6 logical categories for easier discovery and selection. Each category has its own subfolder in the `agents/` directory.
+This document provides a categorized overview of all available agents in the claude_commands framework, organized into 7 logical categories for easier discovery and selection. Each category has its own subfolder in the `agents/` directory.
 
 ## Directory Structure
 
@@ -10,6 +10,7 @@ agents/
 ├── Complience/  
 ├── Engineering/
 ├── Growth/
+├── Helpers/
 ├── Operations/
 └── Strategy/
 ```
@@ -47,7 +48,7 @@ agents/
 - **ai-engineer** - ML model implementation, fine-tuning, RLHF, production ML systems, distributed training
 - **analytics-engineer** - dbt pipelines, metric layers, data transformations, semantic layers, incremental materialization
 - **blockchain-engineer** - Smart contracts, DeFi protocols, NFTs, Layer 2 scaling, MEV protection, Web3 integration
-- **claude-code-expert** - Claude Code development, agent instructions, CC processes, system architecture, CC functionality
+- **game-developer** - Game design, mechanics, player psychology, monetization, performance optimization, mobile/PC games
 - **data-engineer** - ETL/ELT pipelines, streaming data, Spark optimization, data quality monitoring, schema management
 - **data-scientist** - Predictive models, A/B test analysis, statistical modeling, causal inference, recommendation systems
 - **database-specialist** - Query optimization, schema design, sharding strategies, replication, performance tuning
@@ -76,7 +77,14 @@ agents/
 - **support-engineer** - Complex escalations, deep troubleshooting, log analysis, knowledge base creation
 - **technical-writer** - API documentation, developer guides, SDK docs, README files, technical content
 
-## 5. Operations (`agents/Operations/`)
+## 5. Helpers (`agents/Helpers/`)
+*Specialized utility agents for specific domains and meta-tasks*
+
+- **claude-code-expert** - Claude Code development, agent instructions, CC processes, system architecture, CC functionality
+- **stream-to-spec** - Document analysis, requirement extraction, PRD creation, multi-agent orchestration  
+- **tax-specialist** - International tax planning, cryptocurrency taxation, R&D credits, IRS audit defense, FATCA compliance
+
+## 6. Operations (`agents/Operations/`)
 *Infrastructure, DevOps, quality, and operational excellence*
 
 - **accessibility-specialist** - WCAG compliance, screen reader optimization, keyboard navigation, ARIA labels
@@ -91,16 +99,19 @@ agents/
 - **qa-engineer** - Test strategies, automation frameworks, quality gates, coverage metrics, property-based testing
 - **release-engineer** - Deployment strategies, rollout planning, feature flags, blue-green deployments, canary releases
 
-## 6. Strategy (`agents/Strategy/`)
+## 7. Strategy (`agents/Strategy/`)
 *Business strategy, project management, and strategic planning*
 
 - **business-analyst** - Financial models, KPI analysis, cohort analysis, unit economics, requirement translation
 - **competitive-analyst** - Market positioning, competitive threats, differentiation strategies, disruption analysis
+- **game-developer** - Game strategy, player engagement mechanics, monetization models, market analysis for gaming
 - **problem-solver** - Complex problem decomposition, leverage points, scope management, solution orchestration
 - **process-architect** - Workflow design, value streams, Toyota Kata, constraint theory, continuous improvement
 - **product-strategist** - Product vision, roadmaps, OKRs, go-to-market, platform thinking, product-market fit
 - **project-lead** - Team orchestration, dependency management, agile transformations, program governance
+- **reptile-biology-head** - Academic research management, grant applications, curriculum development, scientific publication strategy
 - **strategic-advisor** - Business transformation, scaling strategies, pivots, IPO preparation, hypergrowth planning
+- **strategic-sales-advisor** - Sales strategy, client relationship management, revenue optimization, sales process design
 
 ## Usage Guide
 
@@ -118,6 +129,8 @@ agents/
 - **AI feature implementation**: `ai-architect` + `ai-engineer` + `ml-ops-engineer`
 - **Production deployment**: `devops-engineer` + `qa-engineer` + `release-engineer`
 - **Financial features**: `fintech-architect` + `payment-specialist` + `risk-manager`
+- **Game development**: `game-developer` + `performance-engineer` + `monetization-specialist`
+- **Document analysis**: `stream-to-spec` + `technical-writer` + `business-analyst`
 - **Project execution**: `project-lead` orchestrating multiple specialist agents
 
 ### Best Practices

@@ -4,11 +4,11 @@ A comprehensive framework for managing Claude AI agents, workflows, and commands
 
 ## 🎯 Overview
 
-Strategy:CC Framework transforms Claude into a team of specialized agents, each with focused expertise and clear responsibilities. Through natural language commands, you can orchestrate complex workflows, manage projects, and leverage domain-specific knowledge from 30+ pre-configured specialist agents.
+Strategy:CC Framework transforms Claude into a team of specialized agents, each with focused expertise and clear responsibilities. Through natural language commands, you can orchestrate complex workflows, manage projects, and leverage domain-specific knowledge from 80+ pre-configured specialist agents across 7 focused categories.
 
 ## ✨ Features
 
-- **30+ Specialized Agents**: From backend engineers to UX designers, each agent has deep domain expertise
+- **80+ Specialized Agents**: Organized in 7 categories from Architecture to Strategy, each agent has deep domain expertise
 - **Intelligent Command System**: Natural language parsing for task creation and agent assignment
 - **Project Management Workflow**: Built-in project tracking, task management, and release coordination
 - **Markdown-Based Configuration**: Human-readable, version-controlled agent and command definitions
@@ -21,7 +21,7 @@ Strategy:CC Framework transforms Claude into a team of specialized agents, each 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/claude_commands.git
+git clone https://github.com/agenticbuddy/claude_commands.git
 cd claude_commands
 
 # Run the setup script
@@ -41,7 +41,7 @@ mkdir -p ~/.claude/commands
 
 2. Copy agents and commands:
 ```bash
-cp agents/*.md ~/.claude/agents/
+cp -r agents/ ~/.claude/
 cp commands/*.md ~/.claude/commands/
 ```
 
@@ -57,177 +57,163 @@ Operate in direct, minimal-analysis mode:
 /s
 ```
 
-#### Project Management
+#### Available Commands
 
-Initialize a new project:
+Core workflow commands:
 ```
-/sa_project "MCP Core project to build an LLM audit gateway"
-```
-
-Create a task with intelligent parsing:
-```
-/sa_task "Add field-level encryption to AuditEvent with AES-GCM, update schema and write tests"
-```
-
-Execute a task with the appropriate agent:
-```
-/sa_execute T-001
-```
-
-Check project status:
-```
-/sa_status
-```
-
-Create a release:
-```
-/sa_release v1.0.0
+/learn-conventions    # Learn project conventions and patterns
+/refine-doc          # Transform unstructured documents into professional specifications  
+/docs               # Generate comprehensive documentation
+/develop-idea       # Develop and elaborate on ideas
 ```
 
 ### Working with Agents
 
-Agents can be invoked directly through the Task tool or automatically assigned through commands. Each agent specializes in specific domains:
+Agents are organized into 7 specialized categories. See [CATEGORIES.md](CATEGORIES.md) for complete list:
 
-| Agent | Specialty | Auto-assigned for |
-|-------|-----------|------------------|
-| `backend-engineer` | APIs, services, server-side logic | API, backend, database tasks |
-| `frontend-engineer` | User interfaces, UX, performance | UI, React, frontend tasks |
-| `security-engineer` | Security, vulnerabilities, compliance | Auth, security, vulnerability tasks |
-| `ai-engineer` | ML models, pipelines, AI features | ML, AI, model tasks |
-| `payment-integration-agent` | Payment gateways, transactions | Payment, billing, Stripe tasks |
-| `error-detective` | Debugging, root cause analysis | Bug, error, crash investigations |
-| `project-lead` | Orchestration, quality gates | Project coordination |
+## Agent Categories
+
+**Quick Overview** (see [CATEGORIES.md](CATEGORIES.md) for complete 80+ agent listing):
+
+- **Architecture** - System design, APIs, cloud infrastructure (`system-architect`, `api-architect`, `cloud-architect`)
+- **Compliance** - Security, legal, privacy (`security-engineer`, `privacy-engineer`, `compliance-officer`) 
+- **Engineering** - Core development (`fullstack-engineer`, `ai-engineer`, `database-specialist`, `game-developer`)
+- **Growth** - User acquisition, engagement (`growth-engineer`, `seo-engineer`, `community-lead`)
+- **Helpers** - Meta-tasks and Claude Code utilities (`claude-code-expert`, `stream-to-spec`)
+- **Operations** - DevOps, quality, monitoring (`devops-engineer`, `qa-engineer`, `observability-engineer`)
+- **Strategy** - Business planning, project management (`product-strategist`, `project-lead`, `strategic-advisor`)
 
 ### Example Workflows
 
-#### 1. Starting a New Project
+#### 1. Learning Project Conventions
 ```bash
-# Initialize project
-/sa_project "E-commerce platform with Next.js and Stripe"
+# Analyze and learn codebase patterns
+/learn-conventions
 
-# Create initial tasks
-/sa_task "Set up Next.js project with TypeScript and Tailwind"
-/sa_task "Design database schema for products and orders"
-/sa_task "Implement Stripe payment integration"
-
-# Check status
-/sa_status
+# The agent will study your project structure, coding patterns, 
+# documentation style, and provide insights on established conventions
 ```
 
-#### 2. Bug Investigation
+#### 2. Document Analysis & Specification Creation
 ```bash
-# Report a bug (auto-assigns error-detective)
-/sa_task "Login button not responding on mobile devices"
+# Transform unstructured documents into professional specifications
+/refine-doc project-outline.txt
 
-# Execute with specialized agent
-/sa_execute T-042
+# The agent systematically analyzes documents to:
+# - Detect contradictions and ambiguities
+# - Extract all details and requirements  
+# - Create structured specifications with user guidance
+# - Generate PRDs, wireframes, and implementation roadmaps
+
+# Generate comprehensive documentation
+/docs api-endpoints
 ```
 
-#### 3. Security Audit
+#### 3. Idea Development
 ```bash
-# Create security task (auto-assigns security-engineer)
-/sa_task "Audit API endpoints for SQL injection vulnerabilities"
+# Develop and elaborate on a concept
+/develop-idea "AI-powered code review system"
 
-# Execute comprehensive security review
-/sa_execute T-043
+# The agent will expand the idea with technical details,
+# implementation strategies, and considerations
+```
+
+#### 4. Specialized Agent Usage
+```bash
+# Use Task tool with specific agent
+Task: "Review database schema for performance issues" with agent: database-specialist
+
+# Use Task tool for security analysis
+Task: "Audit authentication flow" with agent: security-engineer
+
+# Create and configure new agents
+Task: "Design a deployment-automation agent with CI/CD focus" with agent: claude-code-expert
+
+# Set up Claude Code for team collaboration
+Task: "Configure MCP servers and hooks for our project" with agent: claude-code-expert
 ```
 
 ## 📁 Repository Structure
 
 ```
 claude_commands/
-├── agents/                 # Specialized agent definitions
-│   ├── backend-engineer.md
-│   ├── frontend-engineer.md
-│   ├── security-engineer.md
-│   └── ... (30+ agents)
-├── commands/               # Workflow command definitions
-│   ├── simple.md          # Simple/direct mode
-│   ├── sa_project.md      # Project initialization
-│   ├── sa_task.md         # Task creation
-│   ├── sa_execute.md      # Task execution
-│   ├── sa_status.md       # Status tracking
-│   └── sa_release.md      # Release management
-├── setup.sh               # Unix/Linux/Mac setup script
-├── setup.ps1              # Windows setup script
-├── uninstall.sh           # Cleanup script
-├── CLAUDE.md              # Claude-specific guidance
-└── README.md              # This file
+├── agents/                     # Specialized agent definitions (80+ agents)
+│   ├── Architecture/           # System & API design agents
+│   ├── Complience/            # Security & legal agents  
+│   ├── Engineering/           # Core development agents
+│   ├── Growth/                # User acquisition & engagement
+│   ├── Helpers/               # Utility & meta-task agents
+│   ├── Operations/            # DevOps & infrastructure agents
+│   └── Strategy/              # Business & project strategy
+├── commands/                  # Workflow command definitions
+│   ├── learn-conventions.md   # Project pattern analysis
+│   ├── refine-doc.md         # Documentation enhancement
+│   ├── docs.md               # Documentation generation
+│   └── develop-idea.md       # Idea development & elaboration
+├── CATEGORIES.md             # Complete agent categorization guide
+├── CLAUDE.md                 # Claude-specific guidance  
+├── setup.sh                 # Unix/Linux/Mac setup script
+├── uninstall.sh             # Cleanup script
+└── README.md                # This file
 ```
 
-### Project Directory Structure (Created by Strategy:CC)
+### Usage with Claude Code
 
-When you initialize a project with Strategy:CC, it creates a `.strategy/` directory:
+The agents work seamlessly with Claude Code's Task tool:
 
-```
-your-project/
-└── .strategy/              # Hidden Strategy:CC tracking directory
-    ├── config/
-    │   └── project.md      # Project charter and configuration
-    ├── epics/
-    │   └── EPIC-001-*.md   # Epic definitions
-    ├── tasks/
-    │   └── T-001-*.md      # Individual task files
-    ├── releases/
-    │   └── v1.0.0-*.md     # Release documentation
-    └── reports/
-        └── <agent>/        # Agent-specific logs
-            └── T-001.md    # Task work logs
-```
+1. **Direct Agent Invocation**: Use Task tool with specific agent type
+2. **Automatic Selection**: Commands automatically route to appropriate agents
+3. **Multi-Agent Workflows**: Complex tasks can involve multiple agents
+4. **Context Preservation**: Agents maintain context across related tasks
 
 ## 🛠️ Configuration
 
 ### Adding Custom Agents
 
-1. Create a new markdown file in `agents/`:
-```yaml
----
-name: your-agent-name
-description: Brief description of the agent's purpose
-color: blue
----
+Use the `claude-code-expert` agent for creating and configuring new agents:
 
-You are a [Role] specialist with expertise in...
-
-Your core competencies include:
-- Competency 1
-- Competency 2
-...
-```
-
-2. Run the setup script to deploy:
 ```bash
-./setup.sh
+# Create a new specialized agent
+Task: "Design a deployment-automation agent with Docker and Kubernetes focus" with agent: claude-code-expert
+
+# Configure agent tools and permissions
+Task: "Set up MCP servers and tool permissions for the payment-processing agent" with agent: claude-code-expert
+
+# Optimize existing agent configuration
+Task: "Review and improve the database-specialist agent configuration" with agent: claude-code-expert
 ```
+
+The `claude-code-expert` will:
+- Design optimal agent instructions and decision frameworks
+- Configure appropriate MCP server integrations  
+- Set up tool permissions and security constraints
+- Provide deployment and testing guidance
 
 ### Creating Custom Commands
 
-1. Create a new markdown file in `commands/`:
-```yaml
----
-name: command_name
-description: What this command does
-aliases: ["/alias1", "/alias2"]
-category: workflow
----
+Use `claude-code-expert` for advanced command creation and Claude Code configuration:
 
-Command instructions and parsing logic...
-```
-
-2. Deploy with setup script:
 ```bash
-./setup.sh
+# Create custom workflow commands
+Task: "Design a /audit-security command that runs multiple security agents" with agent: claude-code-expert
+
+# Set up project-specific hooks
+Task: "Configure pre-commit hooks for code quality and security validation" with agent: claude-code-expert
+
+# Optimize Claude Code settings
+Task: "Create optimal settings.json for our React/Node.js project" with agent: claude-code-expert
 ```
 
 ## 🔧 Development
 
 ### Testing Agents
 ```bash
-# Test an agent directly
-Task: "Review this code" with agent: code-reviewer
+# Test an agent directly with Task tool
+Task: "Review this code for security issues" with agent: security-engineer
 
-# Test command parsing
-/sa_task "Your natural language task description"
+# Test commands  
+/learn-conventions
+/docs api-reference
 ```
 
 ### Contributing
@@ -267,8 +253,9 @@ MIT License - see [LICENSE](LICENSE) file for details
 
 ## 🤝 Support
 
-- Report issues: [GitHub Issues](https://github.com/yourusername/claude_commands/issues)
-- Documentation: See [CLAUDE.md](CLAUDE.md) for detailed guidance
+- Report issues: [GitHub Issues](https://github.com/agenticbuddy/claude_commands/issues)
+- Documentation: See [CLAUDE.md](CLAUDE.md) for detailed guidance  
+- Agent Categories: See [CATEGORIES.md](CATEGORIES.md) for complete agent listing
 - Claude Code docs: https://docs.anthropic.com/en/docs/claude-code
 
 ## 🌟 Acknowledgments
