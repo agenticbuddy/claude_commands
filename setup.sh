@@ -93,7 +93,7 @@ install_agents() {
     for agent_file in "$SCRIPT_DIR"/agents/*.md; do
         if [ -f "$agent_file" ]; then
             cp "$agent_file" "$AGENTS_DIR/"
-            ((count++))
+            count=$((count + 1))
         fi
     done
     
@@ -108,7 +108,7 @@ install_commands() {
     for command_file in "$SCRIPT_DIR"/commands/*.md; do
         if [ -f "$command_file" ]; then
             cp "$command_file" "$COMMANDS_DIR/"
-            ((count++))
+            count=$((count + 1))
         fi
     done
     

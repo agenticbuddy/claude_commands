@@ -1,10 +1,10 @@
-# Aira Framework
+# Strategy:CC Framework
 
 A comprehensive framework for managing Claude AI agents, workflows, and commands through markdown-based configurations. This repository provides a structured approach to organizing Claude Code's work through specialized agents and intelligent command parsing.
 
 ## 🎯 Overview
 
-Aira Framework transforms Claude into a team of specialized agents, each with focused expertise and clear responsibilities. Through natural language commands, you can orchestrate complex workflows, manage projects, and leverage domain-specific knowledge from 30+ pre-configured specialist agents.
+Strategy:CC Framework transforms Claude into a team of specialized agents, each with focused expertise and clear responsibilities. Through natural language commands, you can orchestrate complex workflows, manage projects, and leverage domain-specific knowledge from 30+ pre-configured specialist agents.
 
 ## ✨ Features
 
@@ -155,13 +155,13 @@ claude_commands/
 └── README.md              # This file
 ```
 
-### Project Directory Structure (Created by Aira)
+### Project Directory Structure (Created by Strategy:CC)
 
-When you initialize a project with Aira, it creates a `.aira/` directory:
+When you initialize a project with Strategy:CC, it creates a `.strategy/` directory:
 
 ```
 your-project/
-└── .aira/                  # Hidden Aira tracking directory
+└── .strategy/              # Hidden Strategy:CC tracking directory
     ├── config/
     │   └── project.md      # Project charter and configuration
     ├── epics/
