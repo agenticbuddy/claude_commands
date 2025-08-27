@@ -264,7 +264,7 @@ CRITICAL IMPERATIVES: Determine complete project structure and documentation sco
   - EXCLUDE: .git/, node_modules/, dist/, build/, .next/, .cache/, .vscode/, .idea/, docs/
 - Analyze configuration files (package.json, README, docker) for project understanding
 - Create comprehensive scope definition with inclusion/exclusion rationale
-- Generate project structure map with significance ratings
+- Generate project structure map with significance ratings (all code or configuration related components are important)
 
 **Success Criteria:**
 - Complete directory analysis with significance classification
@@ -282,18 +282,18 @@ CRITICAL IMPERATIVES: Create complete file inventory and optimize documentation 
 - Import project scope from Phase 1 analysis
 - **Generate concrete file-tracking-matrix.md with ALL 198 project files:**
   - Use `find . -name '*.md' -o -name '*.sh' -o -name '*.ps1'` for complete inventory
-  - Create table with specific file paths (agents/Architecture/ai-architect.md, etc.)
+  - Create table with specific file paths (agents/Architecture/ai-architect.md, etc.), columns: " | File Path | Type | Agent | AI Mode | Human Mode | AI Status | Human Status | Priority |"
   - Assign agents based on file type (Agent Config → @technical-writer)
   - Determine mode requirements (templates ✗ Skip AI mode, ✓ Required Human mode)
-  - Include status tracking columns with symbols (⏳ Pending, 🔄 In Progress, ✅ Complete)
+  - Include status tracking columns with symbols (⏳ Pending, ✅ Complete)
 - **@pragmatic-engineer**: Assess documentation efficiency vs code size
-- Optimize AI template to focus on contracts/interfaces only
+- Optimize AI template to focus on contracts/interfaces/logic overview only
 - Ensure AI documentation remains under 50% of source file size
 - Create mode-specific template approach (minimal AI, detailed Human)
 - Test optimized templates on sample files for efficiency
 
 **Success Criteria:**
-- Concrete file-tracking-matrix.md with all 198 files listed explicitly
+- Concrete file-tracking-matrix.md with all files listed explicitly
 - Each file assigned specific agent and mode requirements
 - Optimized templates prevent documentation bloat
 - AI templates focus on essential contracts only
@@ -307,41 +307,47 @@ CRITICAL IMPERATIVES: Create complete file inventory and optimize documentation 
 
 ### Phase 3: File Documentation (Mode-Specific)
 
-**@technical-writer**
+**Initial Setup**
+1. Open `docs/.docs-progress/file-tracking-matrix.md`
+2. Check if any files have status `⏳ Pending`
+3. Determine documentation mode from user request (AI, Human, or Full)
+4. For each file, use subagent from Agent column to process up to 10 files in parallel:
+   - Read the source file content from its original location
+   - Create documentation based on mode:
+     - **AI Mode**: Create file at `docs/ai/files/{source_path}/{filename}.md` using contract template
+     - **Human Mode**: Create file at `docs/human/files/{source_path}/{filename}.md` using detailed template  
+     - **Full Mode**: Create both AI and Human versions
 
-CRITICAL IMPERATIVES: Document every inventoried file using optimized templates and update tracking matrix
-- Import exact file list from file-tracking-matrix.md (198 files)
-- Apply mode-specific templates:
-  - AI Mode: Create `docs/ai/files/{source_path}/{filename}.md` with contract template
-  - Human Mode: Create `docs/human/files/{source_path}/{filename}.md` with detailed template
-  - Full Mode: Create BOTH versions with separate completion tracking
-- **MANDATORY: Update file-tracking-matrix.md after each file:**
-  - Change status from ⏳ Pending → 🔄 In Progress → ✅ Complete
-  - Update progress counters (e.g., "AI Mode: 1/140 files complete")
-  - Add completion timestamp to notes column
-- Mirror exact source directory structure in documentation paths
-- Document ONLY observable code elements - no speculation
-- Track progress separately for each required mode
-- Verify documentation count matches inventory count per mode
+5. For each processed file update `docs/.docs-progress/file-tracking-matrix.md`:
+   - Change file status to `✅ Complete`
+   - Update the progress counter at the top (e.g., change "AI Mode: 5/140" to "AI Mode: 6/140")
+   - Add current timestamp in the notes column
+   - Save the matrix file
 
-**Real-Time Progress Commands:**
-```bash
-# Before starting a file
-@technical-writer "Update file-tracking-matrix.md: Mark agents/Architecture/ai-architect.md as 🔄 In Progress"
+6. Return to step 1 (find next file) until all files are processed
 
-# After completing a file
-@technical-writer "Update file-tracking-matrix.md: Mark agents/Architecture/ai-architect.md AI Progress as ✅ Complete, update counters"
+**Success Criteria - Verification Steps**
+7. Open `docs/.docs-progress/file-tracking-matrix.md` and analyze documentation assignments:
+    - Go line by line and check for each:
+       - Every file with "✓ Required" in "AI Mode" column should have "✅ Complete" in "AI Progress" column  
+       - Every file with "✓ Required" in "Human Mode" column should have "✅ Complete" in "Human Progress" column
 
-# Progress verification
-@technical-writer "Count files in docs/ai/files/ and compare with file-tracking-matrix.md expected total"
-```
 
-**Success Criteria:**
-- Every inventoried file documented in required mode(s)
-- file-tracking-matrix.md updated in real-time with accurate progress
-- Documentation paths mirror source structure exactly
-- Mode-specific completion verified against inventory
-- Content describes only observable code elements
+8. Count actual documentation files on disk:
+9. Open `docs/.docs-progress/file-tracking-matrix.md` and analyze documentation completion:
+    - Go line by line and check for each:
+      - Each file with "✅ Complete" in "AI Progress" column should be documented in `.md` files in `docs/ai/files/<file_path>/<file name>.md`
+      - Each file with "✅ Complete" in "Human Progress" column should be documented in `.md` files in `docs/human/files/<file_path>/<file name>.md`
+    - **If files are marked "✅ Complete" but missing from disk:**
+      - Change their status to "⏳ Pending" in matrix
+      - Save matrix file
+      - Return to step 1
+    - **Only if all numbers match: declare successful completion**
+
+**Error Handling**
+- If unable to read a source file: Mark it as `❌ Failed` in matrix, continue with next file
+- If documentation file creation fails: log error, ask for help
+- Always save matrix after each status change to prevent data loss
 
 **Output:** 
 - `docs/.docs-progress/phase3-file-documentation.md`
@@ -437,6 +443,7 @@ CRITICAL IMPERATIVES: Document APIs found in code with implementing file evidenc
 
 CRITICAL IMPERATIVES: Map user-facing features to technical implementation
 - Identify features from documented interface code
+- Deep dive into the code to collect important details and justify identified features
 - Map features ONLY to documented modules/APIs
 - Describe functionality from observable interface elements
 - Create traceability matrix using documented components
